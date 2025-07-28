@@ -1,2 +1,2 @@
 # ANPrompt
-The Code is coming soon.
+The full Code will coming soon after accept.
