@@ -25,7 +25,7 @@ import datasets.imagenetv2
 import datasets.imagenet_a
 import datasets.imagenet_r
 
-import trainers.mmrl
+import trainers.ANPrompt
 
 def print_args(args, cfg):
     print("***************")
@@ -90,18 +90,16 @@ def extend_cfg(cfg):
 
 
 
-    cfg.TRAINER.MMRL = CN()
-    cfg.TRAINER.MMRL.SCALE = 0.5
-    cfg.TRAINER.MMRL.REG_WEIGHT = 10.0
-    cfg.TRAINER.MMRL.REP_LAYERS = []
-    cfg.TRAINER.MMRL.REP_DIM = 1024
-    cfg.TRAINER.MMRL.N_REP_TOKENS = 6  # number of representation tokens per layer
-    cfg.TRAINER.MMRL.PREC = "fp16"  # fp16, fp32, amp
+    cfg.TRAINER.ANPrompt = CN()
+    cfg.TRAINER.ANPrompt.s_rl = 0.5
+    cfg.TRAINER.ANPrompt.sim_w = 10.0
+    cfg.TRAINER.ANPrompt.in_layers = []
+    cfg.TRAINER.ANPrompt.noise_dim = 512
+    cfg.TRAINER.ANPrompt.N_tokens = 6  # number of representation tokens per layer
+    cfg.TRAINER.ANPrompt.PREC = "fp16"  # fp16, fp32, amp
     cfg.DATASET.SUBSAMPLE_CLASSES = "all"  # all, base or new
     cfg.TASK = "B2N" #B2N, CD, FS
-    cfg.TRAINER.MMRL.PROJ_LORA_DIM = 64
-    cfg.TRAINER.MMRL.RES_LORA_DIM = 4
-    cfg.TRAINER.MMRL.BETA = 0.9
+
 
 def setup_cfg(args):
     cfg = get_cfg_default()
