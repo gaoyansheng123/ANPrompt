@@ -185,7 +185,7 @@ class ResidualAttentionBlock(nn.Module):
         self.n_rep_tokens = design_details["n_rep_tokens"]
         self.model = design_details["model"]
         self.beta = design_details["beta"]
-        assert self.model in ["MMRL", "CLIP"], "Your model must be MMRL or CLIP "
+       
 
     def attention(self, x: torch.Tensor):
         self.attn_mask = self.attn_mask.to(dtype=x.dtype, device=x.device) if self.attn_mask is not None else None
